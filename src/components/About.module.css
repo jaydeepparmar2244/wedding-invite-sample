@@ -1,0 +1,130 @@
+.about {
+  position: relative;
+  overflow: hidden;
+  background: #fdf8f2;
+  padding-bottom: 90px !important;
+}
+
+/* Oval portrait frame */
+.frameWrap {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  margin: 0 auto 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: translateY(24px) scale(0.92);
+  transition:
+    opacity 0.9s ease,
+    transform 0.9s ease;
+}
+.frameIn {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* SVG ornate ring — slowly rotates */
+.outerRing {
+  position: absolute;
+  inset: -20px;
+  width: calc(100% + 40px);
+  height: calc(100% + 40px);
+  animation: spinSlow 28s linear infinite;
+}
+@keyframes spinSlow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Oval image container */
+.oval {
+  width: 190px;
+  height: 210px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid #c9a037;
+  box-shadow:
+    0 0 0 2px rgba(201, 160, 55, 0.25),
+    0 12px 40px rgba(123, 13, 30, 0.2);
+  background: #f5ede0;
+}
+.coupleImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 10%;
+  animation: floatUp 5s ease-in-out infinite;
+}
+@keyframes floatUp {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-7px);
+  }
+}
+
+/* Typography */
+.text {
+  font-family: "Playfair Display", serif;
+  font-size: 1rem;
+  color: #2c1810;
+  line-height: 1.9;
+  text-align: center;
+  font-style: italic;
+  margin-bottom: 4px;
+}
+
+/* Family block */
+.familyBlock {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: rgba(201, 160, 55, 0.07);
+  border: 1px solid rgba(201, 160, 55, 0.28);
+  border-radius: 14px;
+  padding: 20px 16px;
+  width: 100%;
+}
+.fam {
+  flex: 1;
+  text-align: center;
+}
+.fLabel {
+  font-size: 0.65rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #c9a037;
+  margin-bottom: 5px;
+}
+.fName {
+  font-family: "Playfair Display", serif;
+  font-size: 0.9rem;
+  color: #5c0a16;
+  line-height: 1.4;
+}
+.fDiv {
+  width: 1px;
+  height: 44px;
+  background: rgba(201, 160, 55, 0.35);
+  flex-shrink: 0;
+}
+
+/* Wave at bottom */
+.wave {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50px;
+  line-height: 0;
+}
+.wave svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}

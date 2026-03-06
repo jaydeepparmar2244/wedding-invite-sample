@@ -1,0 +1,245 @@
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  /* content anchored to top, couple anchored to bottom — no overlap */
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+  overflow: hidden;
+}
+
+.bgGradient {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: radial-gradient(
+    ellipse 80% 70% at 50% 38%,
+    #5c0a18 0%,
+    #3d0610 50%,
+    #1e0308 100%
+  );
+}
+.bgGlow {
+  position: absolute;
+  z-index: 1;
+  top: 22%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(201, 160, 55, 0.18) 0%,
+    transparent 70%
+  );
+  animation: glow 4s ease-in-out infinite;
+}
+@keyframes glow {
+  0%,
+  100% {
+    opacity: 0.6;
+    transform: translateX(-50%) scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: translateX(-50%) scale(1.2);
+  }
+}
+.ring1,
+.ring2,
+.ring3 {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  border-radius: 50%;
+  border: 1px solid rgba(201, 160, 55, 0.18);
+  transform: translate(-50%, -50%);
+  animation: rotateSlow 25s linear infinite;
+}
+.ring1 {
+  width: min(70vw, 320px);
+  height: min(70vw, 320px);
+}
+.ring2 {
+  width: min(55vw, 250px);
+  height: min(55vw, 250px);
+  border-style: dashed;
+  animation-duration: 18s;
+  animation-direction: reverse;
+}
+.ring3 {
+  width: min(40vw, 180px);
+  height: min(40vw, 180px);
+  border-color: rgba(201, 160, 55, 0.1);
+}
+@keyframes rotateSlow {
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+/* Text block — sits in top portion, clear of couple image */
+.content {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  /* top padding brings it down slightly from edge, bottom padding keeps gap above couple */
+  padding: 56px 40px 0;
+  animation: fadeUp 1.2s ease 0.3s both;
+  /* never overlap the couple: bottom of content stays above couple area */
+  margin-bottom: auto;
+}
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.topRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.line {
+  width: 30px;
+  height: 1px;
+  background: rgba(201, 160, 55, 0.6);
+}
+.tag {
+  font-size: 0.58rem;
+  letter-spacing: 5px;
+  color: rgba(232, 201, 106, 0.8);
+  text-transform: uppercase;
+}
+.blessing {
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+  color: rgba(232, 201, 106, 0.65);
+  text-transform: uppercase;
+}
+.names {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+.name {
+  font-family: "Dancing Script", cursive;
+  font-size: clamp(3.2rem, 13vw, 4.8rem);
+  color: #ffe082;
+  line-height: 1;
+  text-shadow:
+    0 2px 12px rgba(0, 0, 0, 0.6),
+    0 0 40px rgba(201, 160, 55, 0.35);
+}
+.andRow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 2px 0;
+}
+.andLine {
+  width: 36px;
+  height: 1px;
+  background: rgba(201, 160, 55, 0.5);
+}
+.and {
+  font-family: "Playfair Display", serif;
+  font-style: italic;
+  font-size: 1rem;
+  color: #c9a037;
+  letter-spacing: 5px;
+}
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.dLine {
+  width: 50px;
+  height: 1px;
+  background: rgba(201, 160, 55, 0.45);
+}
+.diamond {
+  width: 8px;
+  height: 8px;
+  background: #c9a037;
+  transform: rotate(45deg);
+}
+.date {
+  font-family: "Playfair Display", serif;
+  font-size: 1.05rem;
+  color: #f5e6b2;
+  letter-spacing: 3px;
+}
+.location {
+  font-size: 0.68rem;
+  letter-spacing: 3px;
+  color: rgba(232, 201, 106, 0.5);
+  text-transform: uppercase;
+}
+
+/* Couple — absolutely at bottom, never overlaps text */
+.couple {
+  position: absolute;
+  bottom: 70px; /* sits above the wave */
+  left: 50%;
+  transform: translateX(-50%);
+  /* height cap so it never grows too tall on small screens */
+  width: min(260px, 60vw);
+  max-height: 42vh;
+  object-fit: contain;
+  object-position: bottom;
+  z-index: 4;
+  filter: drop-shadow(0 -8px 30px rgba(0, 0, 0, 0.5));
+  transition: transform 0.15s ease-out;
+  animation:
+    coupleSlideUp 1.5s cubic-bezier(0.22, 1, 0.36, 1) both,
+    coupleFloat 5s ease-in-out 2s infinite;
+}
+@keyframes coupleSlideUp {
+  from {
+    transform: translateX(-50%) translateY(80px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes coupleFloat {
+  0%,
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(-8px);
+  }
+}
+
+.wave {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 5;
+  height: 70px;
+  line-height: 0;
+}
+.wave svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}

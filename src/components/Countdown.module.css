@@ -1,0 +1,76 @@
+.section {
+  position: relative;
+  min-height: auto !important;
+  overflow: hidden;
+  text-align: center;
+  padding: 80px 36px 80px !important;
+  background: #FDF8F2;
+}
+
+.inner {
+  position: relative; z-index: 2;
+  display: flex; flex-direction: column;
+  align-items: center; gap: 20px;
+}
+
+.orn { display:flex; align-items:center; gap:12px; width:200px; }
+.ornLine    { flex:1; height:1px; background:linear-gradient(to right,transparent,rgba(201,160,55,0.5),transparent); }
+.ornDiamond { width:8px; height:8px; flex-shrink:0; background:#C9A037; transform:rotate(45deg); }
+
+.eyebrow {
+  font-size:.62rem; letter-spacing:5px; text-transform:uppercase;
+  color:rgba(123,13,30,0.45); margin-top:4px;
+}
+.heading {
+  font-family:"Dancing Script",cursive;
+  font-size:clamp(2.2rem,9vw,3rem); color:#5C0A16; line-height:1.1;
+}
+.subtext {
+  font-family:"Playfair Display",serif; font-style:italic;
+  font-size:.88rem; color:rgba(92,10,22,0.5); margin-top:-8px;
+}
+
+/* Counter */
+.counter {
+  display:flex; align-items:center; justify-content:center;
+  gap:8px; margin:4px 0;
+}
+.unit { display:flex; flex-direction:column; align-items:center; gap:10px; }
+
+.box {
+  width:clamp(64px,17vw,78px); height:clamp(64px,17vw,78px);
+  border-radius:14px;
+  background:#fff;
+  border:1.5px solid rgba(201,160,55,0.35);
+  display:flex; align-items:center; justify-content:center;
+  box-shadow:0 4px 20px rgba(123,13,30,0.08), inset 0 1px 0 rgba(255,255,255,0.9);
+}
+.num {
+  font-family:"Playfair Display",serif;
+  font-size:clamp(1.7rem,6vw,2.2rem); font-weight:700;
+  color:#5C0A16; line-height:1;
+}
+.label { font-size:.6rem; letter-spacing:3px; text-transform:uppercase; color:rgba(201,160,55,0.7); }
+
+.colon {
+  font-family:"Playfair Display",serif; font-size:1.8rem; font-weight:700;
+  color:rgba(201,160,55,0.6); margin-bottom:22px;
+  animation:blink 1s ease-in-out infinite;
+}
+@keyframes blink { 0%,49%{opacity:1} 50%,100%{opacity:.2} }
+
+.rule {
+  width:120px; height:1px;
+  background:linear-gradient(to right,transparent,rgba(201,160,55,.5),transparent);
+}
+
+.dateStrip { display:flex; align-items:center; gap:10px; }
+.dateNum { font-family:"Playfair Display",serif; font-size:1.8rem; font-weight:700; color:#5C0A16; }
+.dateSep  { color:rgba(201,160,55,.5); font-size:1.2rem; }
+.dateMon  { font-family:"Playfair Display",serif; font-size:1.1rem; color:#2C1810; }
+.dateYear { font-family:"Playfair Display",serif; font-size:1.1rem; color:rgba(44,24,16,.55); }
+
+.venue {
+  font-size:.68rem; letter-spacing:3px; text-transform:uppercase;
+  color:rgba(201,160,55,.6); margin-top:-8px;
+}

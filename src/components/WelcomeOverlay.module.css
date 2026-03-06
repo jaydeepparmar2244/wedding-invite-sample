@@ -1,0 +1,111 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  overflow: hidden;
+  /* fade out transition */
+  opacity: 1;
+  transition: opacity 0.8s ease;
+  /* NEVER block scrolling on the page beneath */
+  touch-action: none;
+}
+.hide {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  animation: slowZoom 8s ease-in-out infinite alternate;
+  z-index: 0;
+}
+@keyframes slowZoom {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.08);
+  }
+}
+
+.bgOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 5, 5, 0.5);
+  z-index: 1;
+}
+
+.textBlock {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  animation: fadeUp 1s ease 0.2s both;
+}
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.label {
+  font-size: 0.62rem;
+  letter-spacing: 5px;
+  color: rgba(245, 230, 178, 0.75);
+  text-transform: uppercase;
+}
+.names {
+  font-family: "Dancing Script", cursive;
+  font-size: clamp(2.8rem, 10vw, 3.8rem);
+  color: #ffe082;
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.7);
+  line-height: 1.1;
+}
+.divider {
+  width: 80px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, #c9a037, transparent);
+  margin: 4px 0;
+}
+.date {
+  font-family: "Playfair Display", serif;
+  font-size: 0.88rem;
+  color: rgba(245, 230, 178, 0.75);
+  letter-spacing: 3px;
+}
+.tap {
+  font-size: 0.7rem;
+  letter-spacing: 4px;
+  color: rgba(245, 230, 178, 0.6);
+  text-transform: uppercase;
+  margin-top: 10px;
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
