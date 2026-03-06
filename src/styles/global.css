@@ -1,0 +1,66 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --cream: #fdf8f2;
+  --maroon: #7b0d1e;
+  --maroon2: #5c0a16;
+  --dark: #1e0308;
+  --gold: #c9a037;
+  --text: #2c1810;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  width: 100%;
+  overflow: hidden;
+  font-family: "Poppins", sans-serif;
+  background: #1e0308;
+}
+
+#root {
+  width: 100%;
+}
+
+.appWrap {
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.section {
+  width: 100%;
+  min-height: 100vh;
+  padding: 70px 36px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  opacity: 1;
+  transform: none;
+}
+
+.section-title {
+  font-family: "Playfair Display", serif;
+  font-size: 1.8rem;
+  color: var(--maroon);
+  text-align: center;
+  margin-bottom: 8px;
+}
+.section-subtitle {
+  font-size: 0.68rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold);
+  text-align: center;
+  margin-bottom: 32px;
+}
