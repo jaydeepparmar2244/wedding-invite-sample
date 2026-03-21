@@ -1,10 +1,12 @@
+/* ── MOBILE (default) ── */
+
 .footer {
   position: relative;
   min-height: 100vh;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  align-items: flex-end; /* push content to the right */
+  align-items: flex-end;
   justify-content: flex-start;
   opacity: 0;
   transform: translateY(30px);
@@ -17,39 +19,33 @@
   transform: translateY(0);
 }
 
-/* Background image */
+/* Mobile background image */
 .bg {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: center top;
   z-index: 0;
+  background-image: url("/images/flowers_bg.jpg");
+  background-size: cover;
+  background-position: center top;
 }
 
-/*
-  Flowers are top + left.
-  We protect the right-center area (where text lives) with
-  just a faint white wash — no heavy dark overlay.
-*/
 .overlay {
   position: absolute;
   inset: 0;
   z-index: 1;
   background:
-    /* lighten the top-left flower zone a tiny bit */
     radial-gradient(
       ellipse 60% 40% at 15% 10%,
       rgba(255, 255, 255, 0.35) 0%,
       transparent 80%
     ),
-    /* soft white wash on the right reading zone */
     radial-gradient(
-        ellipse 70% 60% at 70% 45%,
-        rgba(255, 255, 255, 0.55) 0%,
-        transparent 80%
-      );
+      ellipse 70% 60% at 70% 45%,
+      rgba(255, 255, 255, 0.55) 0%,
+      transparent 80%
+    );
 }
 
 /* Content — right side, starts below top flowers */
@@ -58,17 +54,13 @@
   z-index: 2;
   display: flex;
   flex-direction: column;
-  align-items: flex-end; /* right-align */
+  align-items: flex-end;
   gap: 14px;
-  /* top padding clears the hanging flowers (~30% height) */
-  /* right padding keeps text off the edge */
-  /* left padding pushes text away from left flowers */
   padding: 38% 28px 0 52%;
   text-align: right;
   width: 100%;
 }
 
-/* Ornament row */
 .divRow {
   display: flex;
   align-items: center;
@@ -101,7 +93,7 @@
   color: rgba(92, 10, 22, 0.5);
 }
 
-/* Names */
+/* Mobile: names stacked */
 .namesWrap {
   display: flex;
   flex-direction: column;
@@ -161,13 +153,11 @@
   margin-top: 4px;
 }
 
-/* Couple — smaller, bottom center, no blend so it stays clean */
 .couple {
   position: absolute;
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  /* smaller than before */
   width: min(220px, 55vw);
   height: auto;
   z-index: 3;
@@ -196,5 +186,59 @@
   }
   50% {
     transform: translateX(-50%) translateY(-8px);
+  }
+}
+
+/* ══ DESKTOP ONLY (768px+) ══ */
+@media (min-width: 768px) {
+  /* Swap background to desktop floral border image */
+  .bg {
+    background-image: url("/images/desktop-flowers.png");
+    background-position: center center;
+  }
+
+  /* Center overlay for desktop bg */
+  .overlay {
+    background: radial-gradient(
+      ellipse 80% 60% at 50% 40%,
+      rgba(255, 255, 255, 0.6) 0%,
+      transparent 80%
+    );
+  }
+
+  /* Center everything */
+  .footer {
+    align-items: center;
+    justify-content: center;
+  }
+  .content {
+    align-items: center;
+    text-align: center;
+    padding: 60px 80px 200px;
+    z-index: 4;
+  }
+
+  /* Names side by side */
+  .namesWrap {
+    flex-direction: row;
+    align-items: center;
+  }
+  .andRow {
+    margin: 0 16px;
+    justify-content: center;
+  }
+
+  .name {
+    font-size: clamp(3rem, 5vw, 4.8rem);
+  }
+  .quote {
+    max-width: 440px;
+    font-size: 0.95rem;
+  }
+  .divRow {
+    width: 200px;
+  }
+  .couple {
+    width: min(300px, 28vw);
   }
 }
