@@ -18,6 +18,7 @@ export default function WelcomeOverlay({ onOpen }) {
     >
       <img src="/images/hero_bg.png" alt="" className={styles.bg} />
       <div className={styles.bgOverlay} />
+
       <div className={styles.textBlock}>
         <p className={styles.label}>YOU ARE INVITED</p>
         <div className={styles.divider} />
