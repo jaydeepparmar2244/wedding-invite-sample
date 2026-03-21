@@ -5,23 +5,20 @@ import styles from "./Footer.module.css";
 
 export default function Footer() {
   const { ref, visible } = useScrollAnimation();
-
   const dateObj = new Date(config.weddingDate);
   const day = dateObj.getDate();
   const month = dateObj.toLocaleString("en", { month: "long" });
   const year = dateObj.getFullYear();
 
   return (
-    <div
-      ref={ref}
+    <footer
       className={`${styles.footer} ${visible ? styles.visible : ""}`}
+      ref={ref}
     >
-      {/* Floral background */}
-      <img src="/images/flowers_bg.jpg" alt="" className={styles.bg} />
-      {/* Very subtle overlay only over the flower areas — not the clear zone */}
+      {/* bg div — CSS swaps image: mobile=footer-bg.jpg, desktop=desktop-flowers.jpg */}
+      <div className={styles.bg} />
       <div className={styles.overlay} />
 
-      {/* Text block — right side, lower than top flowers */}
       <div className={styles.content}>
         <div className={styles.divRow}>
           <div className={styles.dl} />
@@ -29,9 +26,8 @@ export default function Footer() {
           <div className={styles.dl} />
         </div>
 
-        <p className={styles.eyebrow}>With Love &amp; Joy</p>
+        <div className={styles.eyebrow}>With Love &amp; Joy</div>
 
-        {/* Names */}
         <div className={styles.namesWrap}>
           <span className={styles.name}>{config.groomName}</span>
           <div className={styles.andRow}>
@@ -42,9 +38,9 @@ export default function Footer() {
           <span className={styles.name}>{config.brideName}</span>
         </div>
 
-        <p className={styles.date}>
+        <div className={styles.date}>
           {day} · {month} · {year}
-        </p>
+        </div>
 
         <div className={styles.divRow}>
           <div className={styles.dl} />
@@ -52,19 +48,17 @@ export default function Footer() {
           <div className={styles.dl} />
         </div>
 
-        <p className={styles.quote}>
+        <div className={styles.quote}>
           "Where two hearts meet, a lifetime of love begins. We are nothing
           without the blessings of our family."
-        </p>
+        </div>
 
-        <p className={styles.watermark}>
-          WITH LOVE &nbsp;·&nbsp; {config.venueCity.split(",")[0].toUpperCase()}{" "}
-          &nbsp;·&nbsp; {year}
-        </p>
+        <div className={styles.watermark}>
+          WITH LOVE · {config.venueCity.split(",")[0].toUpperCase()} · {year}
+        </div>
       </div>
 
-      {/* Couple — smaller, bottom center */}
       <img src="/images/couple3.png" alt="Couple" className={styles.couple} />
-    </div>
+    </footer>
   );
 }
