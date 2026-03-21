@@ -8,10 +8,8 @@
   justify-content: center;
   cursor: pointer;
   overflow: hidden;
-  /* fade out transition */
   opacity: 1;
   transition: opacity 0.8s ease;
-  /* NEVER block scrolling on the page beneath */
   touch-action: none;
 }
 .hide {
@@ -25,7 +23,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center;
+  object-position: center top;
   animation: slowZoom 8s ease-in-out infinite alternate;
   z-index: 0;
 }
@@ -107,5 +105,60 @@
   }
   50% {
     opacity: 0.3;
+  }
+}
+
+/* ════════════════════════════════
+   DESKTOP 768px+
+   Dark maroon bg, floral image as
+   a centered card with 40px margin
+════════════════════════════════ */
+@media (min-width: 768px) {
+  /* Dark bg visible around the image card */
+  .overlay {
+    background: #1e0308;
+  }
+
+  /* Image becomes a contained card with margin all sides */
+  .bg {
+    inset: 40px;
+    width: calc(100% - 80px);
+    height: calc(100% - 80px);
+    object-fit: contain;
+    object-position: center center;
+    /* border-radius: 8px; */
+    /* box-shadow: 0 8px 48px rgba(0, 0, 0, 0.6); */
+    /* swap to landscape floral image */
+    content: url("/images/invite-bg.jpg");
+  }
+
+  /* No dark overlay on light floral image */
+  .bgOverlay {
+    display: none;
+  }
+
+  /* Bigger fonts, dark maroon text on white background */
+  .label {
+    font-size: 0.65rem;
+    letter-spacing: 6px;
+    color: rgba(92, 10, 22, 0.65);
+  }
+  .names {
+    font-size: clamp(2.6rem, 4.5vw, 3.4rem);
+    color: #5c0a16;
+    text-shadow: none;
+  }
+  .divider {
+    background: linear-gradient(to right, transparent, #c9a037, transparent);
+  }
+  .date {
+    font-size: 0.92rem;
+    color: rgba(92, 10, 22, 0.7);
+    letter-spacing: 3px;
+  }
+  .tap {
+    font-size: 0.68rem;
+    letter-spacing: 4px;
+    color: rgba(92, 10, 22, 0.5);
   }
 }
